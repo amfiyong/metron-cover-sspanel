@@ -451,7 +451,7 @@ return function (SlimApp $app) {
         $this->get('/nodeinfo/{id}',         App\Controllers\VueController::class . ':getNodeInfo');
         $this->get('/resettelegram',         App\Controllers\VueController::class . ':telegramReset');
         $this->get('/getconnectsettings',         App\Controllers\VueController::class . ':getConnectSettings');
-    })->add(new \App\Middleware\AccessOrigin());
+    });
 
     $app->post('/api/migration', App\Controllers\BobMigrateController::class . ':migration');
     $app->post('/api/authAdmin', App\Controllers\BobMigrateController::class . ':authAdmin');

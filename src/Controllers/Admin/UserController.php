@@ -27,6 +27,7 @@ use App\Utils\{
 };
 use Exception;
 use App\Utils\DatatablesHelper;
+use Ramsey\Uuid\Uuid;
 
 class UserController extends AdminController
 {
@@ -139,7 +140,7 @@ class UserController extends AdminController
         $user->reg_ip               = $_SERVER['REMOTE_ADDR'];
         $user->plan                 = 'A';
         $user->theme                = $_ENV['theme'];
-        $user->uuid                = Tools::genUUID();
+        $user->uuid             = Uuid::uuid3(Uuid::NAMESPACE_DNS, ($user->passwd) . $_ENV['key'])->toString();
 
         $groups = explode(',', $_ENV['random_group']);
 
