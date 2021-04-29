@@ -19,6 +19,7 @@ class User extends Command
         . '│ ├─ createAdmin             - 创建管理员帐号' . PHP_EOL
         . '│ ├─ resetAllPort            - 重置所有用户端口' . PHP_EOL
         . '│ ├─ resetTraffic            - 重置所有用户流量' . PHP_EOL
+        . '| ├─ generateUUID            - 为所有用户生成新的 UUID' . PHP_EOL
         . '│ ├─ cleanRelayRule          - 清除所有中转规则' . PHP_EOL;
 
     public function boot()
@@ -96,6 +97,24 @@ class User extends Command
         echo 'reset traffic successful' . PHP_EOL;
     }
 
+    /**
+     * 为所有用户生成新的 UUID
+     * 
+     * @return void
+     */
+    public function generateUUID()
+    {
+        $user = ModelsUser::all();
+        $current_timetamp = time();
+        foreach ($users as $user) {
+            $user->uuid = Uuid::uuid3(
+                Uuid::NAMESPACE_DNS,
+                $user->email . '|' . $current_timetamp
+            );
+            $user->save();
+        }
+        echo 'generate UUID successful' . PHP_EOL;
+    }
     /**
      * 清理所有中转规则
      *
