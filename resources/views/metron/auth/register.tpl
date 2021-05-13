@@ -107,6 +107,10 @@
                         {include file='include/auth/scripts.tpl'}
 
 <script>
+    if ((getCookie('uid')) != '') {
+        window.location.href = '/user';
+    }
+    
     {*dumplin：轮子1.js读取url参数*}
     function getQueryVariable(variable) {
         var query = window.location.search.substring(1);
