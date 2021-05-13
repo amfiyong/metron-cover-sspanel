@@ -269,6 +269,8 @@
                         <p>节点Host：<code id="nodeinfo-trojan-modal-host"></code></p>
                         <p>节点端口：<code id="nodeinfo-trojan-modal-port"></code></p>
                         <p>节点密码：<code id="nodeinfo-trojan-modal-passwd"></code></p>
+                        <p>Trojan 链接：<code class="cursor_onclick copy-modal" id="nodeinfo-trojan-modal-url"
+                                          data-clipboard-text="#">点击复制</code></p>
                     </div>
                 </div>
                 <div class="modal-footer">
