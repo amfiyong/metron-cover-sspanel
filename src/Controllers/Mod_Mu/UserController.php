@@ -13,6 +13,7 @@ use App\Models\{
 };
 use App\Utils\Tools;
 use App\Metron\{Metron, MtAuth};
+use ArrayObject;
 
 class UserController extends BaseController
 {
@@ -87,16 +88,27 @@ class UserController extends BaseController
                     }
                 )->orwhere('is_admin', 1);
             }
-        )
-            ->where('enable', 1)->where('expire_in', '>', date('Y-m-d H:i:s'))->get();
+        )->where('enable, 1')->('expire_in', '>',date('Y-m-d H:i:s'))->get();
 
         $users = array();
 
-        $key_list = array(
-            'email', 'method', 'obfs', 'obfs_param', 'protocol', 'protocol_param',
+        $key_list = array
+        $key_list_ss_ssr = arry(
+            'method', 'obfs', 'obfs_parm', 'protocol', 'protocol_parm',
+            'forbidden_ip', 'forbidden_port', 'node_speedlimit', 'disconect_ip', 
+            'is_multi_user', 'u', 'd', 'transfer_enable', 'id', 'port', 'passwd',
+            'node_connector', 'alive_ip'
+        );
+
+        $key_list_v2ray = array(
             'forbidden_ip', 'forbidden_port', 'node_speedlimit', 'disconnect_ip',
-            'is_multi_user', 'id', 'port', 'passwd', 'u', 'd', 'node_connector',
-            'sort', 'uuid'
+            'u', 'd', 'transfer_enable', 'id', 'node_connector', 'uuid', 'alive_ip'
+        );
+
+        
+        $key_list_trojan = array(
+            'forbidden_ip', 'forbidden_port', 'node_speedlimit', 'disconnect_ip',
+            'u', 'd', 'trnasfer_enable', 'id', 'node_connector', 'sha224uuid', 'alive_ip'
         );
 
         foreach ($users_raw as $user_raw) {
@@ -118,9 +130,13 @@ class UserController extends BaseController
                     $user_raw->port = ($user_raw->port + $muPort['type']);
                 }
             }
-            $user_raw = Tools::keyFilter($user_raw, $key_list);
             if ($node->sort == 14) {
                 $user_raw->sha224uuid = hash('sha224', $user_raw->uuid);
+                $user_raw = Tools::keyFilter($user_raw, $key_list_trojan);
+            } elseif ($node->sort == 11) {
+                $user_raw = Tools::keyFilter($user_raw,$key_list_v2ray);
+            } else {
+                $user_raw = Tools::keyFilter($user_raw, $key_list_ss_ssr);    
             }
             $users[] = $user_raw;
         }
