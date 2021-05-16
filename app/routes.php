@@ -435,24 +435,6 @@ return function (SlimApp $app) {
         $this->post('/status',          App\Services\Payment::class . ':getStatus');
     });
 
-    // Vue
-    $app->group('', function () {
-        $this->get('/logout',                App\Controllers\VueController::class . ':vuelogout');
-        $this->get('/globalconfig',          App\Controllers\VueController::class . ':getGlobalConfig');
-        $this->get('/getuserinfo',           App\Controllers\VueController::class . ':getUserInfo');
-        $this->post('/getuserinviteinfo',    App\Controllers\VueController::class . ':getUserInviteInfo');
-        $this->get('/getusershops',          App\Controllers\VueController::class . ':getUserShops');
-        $this->get('/getallresourse',        App\Controllers\VueController::class . ':getAllResourse');
-        $this->get('/getnewsubtoken',        App\Controllers\VueController::class . ':getNewSubToken');
-        $this->get('/getnewinvotecode',      App\Controllers\VueController::class . ':getNewInviteCode');
-        $this->get('/gettransfer',           App\Controllers\VueController::class . ':getTransfer');
-        $this->get('/getCaptcha',            App\Controllers\VueController::class . ':getCaptcha');
-        $this->post('/getChargeLog',         App\Controllers\VueController::class . ':getChargeLog');
-        $this->get('/nodeinfo/{id}',         App\Controllers\VueController::class . ':getNodeInfo');
-        $this->get('/resettelegram',         App\Controllers\VueController::class . ':telegramReset');
-        $this->get('/getconnectsettings',         App\Controllers\VueController::class . ':getConnectSettings');
-    });
-
     $app->post('/api/migration', App\Controllers\BobMigrateController::class . ':migration');
     $app->post('/api/authAdmin', App\Controllers\BobMigrateController::class . ':authAdmin');
 
