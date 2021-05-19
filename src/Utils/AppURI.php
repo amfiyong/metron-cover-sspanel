@@ -57,18 +57,20 @@ class AppURI
         switch ($item['type']) {
             case 'vmess':
                 $node = [
-                    'v' => "2",
-                    'ps' => $item['remark'],
-                    'add' => $item['add'],
+                    'v'    => "2",
+                    'ps'   => $item['remark'],
+                    'add'  => $item['add'],
                     'port' => (string)$item['port'],
-                    'id' => $item['id'],
-                    'aid' => (string)$item['aid'],
-                    'net' => $item['net'],
+                    'id'   => $item['id'],
+                    'aid'  => (string)$item['aid'],
+                    'net'  => $item['net'],
                     'type' => $item['headerType'],
                     'host' => $item['host'],
                     'path' => $item['path'],
-                    'tls' => $item['tls']
+                    'tls'  => $item['tls',]
+                    'sni'  => $item['sni']
                 ];
+
                 $return = ('vmess://' . base64_encode(
                         json_encode($node, 320)
                     ));
@@ -119,8 +121,11 @@ class AppURI
                             break;
                         }
                         $tls = ($item['tls'] == 'tls'
-                            ? ', tls=true'
+                            ? ', tls=true ,sni=' . $item['host']
                             : '');
+                        /*$sni = ($item['sni']
+                            ?', '.$item['sni']
+                            : '');*/    
                         $ws = ($item['net'] == 'ws'
                             ? ', ws=true, ws-path=' . $item['path'] . ', ws-headers=host:' . $item['host']
                             : '');
