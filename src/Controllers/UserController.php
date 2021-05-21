@@ -51,6 +51,7 @@ use App\Utils\{
 use App\Metron\{Metron, MtAuth, MtTelegram};
 use voku\helper\AntiXSS;
 use Exception;
+use Ramsey\Uuid\Uuid;
 
 /**
  *  HomeController
@@ -1194,13 +1195,19 @@ class UserController extends BaseController
             $res['msg'] = '密码不能为空';
             return $response->getBody()->write(json_encode($res));
         }
-
         if (!Tools::is_validate($pwd)) {
             $res['ret'] = 0;
             $res['msg'] = '密码无效';
             return $response->getBody()->write(json_encode($res));
         }
+        if ($otheruuid != null) {
+            $res['ret'] = 0;
+            $res['msg'] = 'something error,wating one second';
+            return $response->getBody()->wrtie(json_encode($res));
+        }
 
+        $user->uuid = $new_uuid;
+        $user->save();
         $user->updateSsPwd($pwd);
         $res['ret'] = 1;
 

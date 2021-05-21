@@ -34,6 +34,7 @@ use App\Utils\Radius;
 use App\Utils\Telegram;
 use App\Utils\DatatablesHelper;
 use ArrayObject;
+use Exception;
 
 class Job extends Command
 {
