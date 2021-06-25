@@ -108,14 +108,12 @@ class User extends Command
         $user = ModelsUser::all();
         $current_timetamp = time();
         foreach ($users as $user) {
-            $user->uuid = Uuid::uuid3(
-                Uuid::NAMESPACE_DNS,
-                $user->email . '|' . $current_timetamp
-            );
-            $user->save();
+            /** @var ModelsUser $user */
+            $user->generateUUID($current_timestamp);
         }
         echo 'generate UUID successful' . PHP_EOL;
     }
+    
     /**
      * 清理所有中转规则
      *

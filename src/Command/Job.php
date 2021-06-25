@@ -40,6 +40,7 @@ class Job extends Command
 {
     public $description = ''
     . '├─=: php xcat Job [选项]' . PHP_EOL
+    . '│ ├─ SendMail                - 处理邮件队列' . PHP_EOL
     . '│ ├─ UserGa                  - 二次验证' . PHP_EOL
     . '│ ├─ DailyJob                - 每日任务' . PHP_EOL
     . '│ ├─ CheckJob                - 检查任务，每分钟' . PHP_EOL
@@ -58,6 +59,36 @@ class Job extends Command
                 echo '方法不存在.' . PHP_EOL;
             }
         }
+    }
+
+    /**
+     * 发邮件
+     *
+     * @return void
+     */
+    public function SendMail()
+    {
+        if (file_exists(BASE_PATH . '/storage/email_queue')) {
+            echo "程序正在运行中" . PHP_EOL;
+            return false;
+        }
+        $myfile = fopen(BASE_PATH . '/storage/email_queue', 'wb+') or die('Unable to open file!');
+        $txt = '1';
+        fwrite($myfile, $txt);
+        fclose($myfile);
+        // 分块处理，节省内存
+        EmailQueue::chunkById(1000, function ($email_queues) {
+            foreach ($email_queues as $email_queue) {
+                try {
+                    Mail::send($email_queue->to_email, $email_queue->subject, $email_queue->template, json_decode($email_queue->array), []);
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+                echo '发送邮件至 ' . $email_queue->to_email . PHP_EOL;
+                $email_queue->delete();
+            }
+        });
+        unlink(BASE_PATH . '/storage/email_queue');
     }
 
     /**
@@ -479,7 +510,6 @@ class Job extends Command
                 $sinuser->delete();
                 continue;
             }
-
             if ($user->enable == 1 && (strtotime($user->expire_in) > time() || strtotime(
                         $user->expire_in
                     ) < 644447105) && $user->transfer_enable > $user->u + $user->d) {
