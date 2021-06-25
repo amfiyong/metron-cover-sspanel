@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>筋斗云 - 世界触手可及 </title>
+        <title>{$config['appName']} - 世界触手可及 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -71,7 +71,7 @@
 					<div class="row">
 						<div class="col-md-offset-4 col-sm-offset-4 col-md-8">
 							<div class="hero-text mr-ri-l">
-								<h1>筋斗云</h1>
+								<h1>{$config['appName']}</h1>
 								<h1>世界触手可及</h1>
 								<p>移动、电信和联通三网融合接入，流经特殊优化的智能BGP中继隧道，V2RAY+SSR节点落地亚太、北美、西欧等全球网络区域，确保更高的传输性能和更低的网络延迟</p>
 								<a target="_blank" href="/auth/login" class="hero-btn">登录</a>
@@ -134,8 +134,8 @@
 					<div class="col-md-6">
 						<div class="about-content">
 							<h2>产品简介</h2>
-							<p>筋斗云出自全球互联网信息化与网络安全服务提供商 筋斗云，系面向中高端用户的VPN重磅产品</p>
-							<p>筋斗云拥有一支非常优秀的售后服务团队，始终秉承“以客户为中心”的服务理念，致力于产品体验的持续提升，匠心铸造客户满意的跨洋VPN专线产品</p>
+							<p>{$config['appName']}出自全球互联网信息化与网络安全服务提供商 {$config['appName']}，系面向中高端用户的VPN重磅产品</p>
+							<p>{$config['appName']}拥有一支非常优秀的售后服务团队，始终秉承“以客户为中心”的服务理念，致力于产品体验的持续提升，匠心铸造客户满意的跨洋VPN专线产品</p>
 							<p>目前国内已开通：广州—香港、长沙—东京、东莞—香港、长沙—台北、广州—硅谷、长沙—硅谷、广州—美西、长沙-台北等中继专线，立足亚洲，服务全球</p>
 							<a class="hero-btn video-popup" href="/vpn/videos/JinDCloud-VPN.mp4"><i class="icofont icofont-play-alt-2"></i> 观看视频简介 </a>
 						</div>
@@ -203,7 +203,7 @@
 							</div>
 							<div class="awesome-feature-details">
 								<h5>教育科研</h5>
-								<p>筋斗云帮助科研人员科学上网，随时随地查阅科研文献</p>
+								<p>{$config['appName']}帮助科研人员科学上网，随时随地查阅科研文献</p>
 							</div>
 						</div>
 					</div>
@@ -214,7 +214,7 @@
 							</div>
 							<div class="awesome-feature-details">
 								<h5>视听娱乐</h5>
-								<p>筋斗云实现颠覆性的4K高清视频超畅快体验</p>
+								<p>{$config['appName']}实现颠覆性的4K高清视频超畅快体验</p>
 							</div>
 						</div>
 					</div>
@@ -225,7 +225,7 @@
 							</div>
 							<div class="awesome-feature-details">
 								<h5>跨境外贸</h5>
-								<p>筋斗云帮助外贸人员使用外贸应用连接全球客户</p>
+								<p>{$config['appName']}帮助外贸人员使用外贸应用连接全球客户</p>
 							</div>
 						</div>
 					</div>
@@ -497,19 +497,19 @@
 					<div class="testimonial-active owl-carousel">
 						<div class="col-md-12">
 							<div class="testimonial-desc text-center">
-								<p>无障碍访问 Google、Youtube、Netflix、WhatsApp、Instagram、Facebook、Twitter、Hulu、HBO、TVB 等服务，看看剧看看直播，生活变得更加多姿多彩了。 偶尔还能在Twitter上跟明星或政客互动，更是开心极了。筋斗云拉近了我与世界的距离。</p>
+								<p>无障碍访问 Google、Youtube、Netflix、WhatsApp、Instagram、Facebook、Twitter、Hulu、HBO、TVB 等服务，看看剧看看直播，生活变得更加多姿多彩了。 偶尔还能在Twitter上跟明星或政客互动，更是开心极了。{$config['appName']}拉近了我与世界的距离。</p>
 								<h4>楠哥</h4>
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="testimonial-desc text-center">
-								<p>作为一名科研工作者，最不可或缺的就是查阅科研文献。 看着身边朋友们想尽办法却一无所获，我用筋斗云随心所欲地翻阅国内外资料，轻松获取海量科研资源。感谢筋斗云助我一臂之力！</p>
+								<p>作为一名科研工作者，最不可或缺的就是查阅科研文献。 看着身边朋友们想尽办法却一无所获，我用{$config['appName']}随心所欲地翻阅国内外资料，轻松获取海量科研资源。感谢{$config['appName']}助我一臂之力！</p>
 								<h4>雷君</h4>
 							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="testimonial-desc text-center">
-								<p>随着交易所的逐步出海，币圈生态越来越不稳定。 有了筋斗云，终于能够安全稳定地登陆全球各大交易所了。Telegram上的海量信息，更是帮助我做出很多正确的决策。 </p>
+								<p>随着交易所的逐步出海，币圈生态越来越不稳定。 有了{$config['appName']}，终于能够安全稳定地登陆全球各大交易所了。Telegram上的海量信息，更是帮助我做出很多正确的决策。 </p>
 								<h4>李小来</h4>
 							</div>
 						</div>
@@ -644,7 +644,7 @@
 										<i class="icofont icofont-web"></i>
 									</div>
 									<div class="media-body text-center">
-										<p>筋斗云官网<br>  www.jindcloud.com </p>
+										<p>{$config['appName']}官网<br>  www.jindcloud.com </p>
 									</div>
 								</div>
 							</div>
@@ -656,7 +656,7 @@
 										<i class="icofont icofont-social-google-map"></i>
 									</div>
 									<div class="media-body text-center">
-										<p>筋斗云 <br> 您的智能云专线</p>
+										<p>{$config['appName']} <br> 您的智能云专线</p>
 									</div>
 								</div>
 							</div>

@@ -503,19 +503,19 @@ textarea:focus {
 .bg-1, .bg-2, .bg-3, .bg-4, .bg-5, .bg-6, .bg-7, .bg-8, .bg-9, .bg-10{
     background-attachment: fixed; background-clip: initial; background-color: rgba(0, 0, 0, 0); background-origin: initial; background-position: center center; background-repeat: no-repeat; background-size: cover; position: relative; z-index: 0;
  }
-.bg-1 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/1.png") repeat scroll center center / cover ;}
-.bg-2 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/2.png") repeat scroll center center / cover ;}
-.bg-3 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/3.png") repeat scroll center center / cover ;}
-.bg-4 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/4.png") repeat scroll center center / cover ;}
-.bg-5 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/5.png") repeat scroll center center / cover ;}
-.bg-6 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/6.png") repeat scroll center center / cover ;}
-.bg-7 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/bg/7.png") repeat scroll center center / cover ;}
+.bg-1 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/1.png") repeat scroll center center / cover ;}
+.bg-2 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/2.png") repeat scroll center center / cover ;}
+.bg-3 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/3.png") repeat scroll center center / cover ;}
+.bg-4 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/4.png") repeat scroll center center / cover ;}
+.bg-5 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/5.png") repeat scroll center center / cover ;}
+.bg-6 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/6.png") repeat scroll center center / cover ;}
+.bg-7 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/bg/7.png") repeat scroll center center / cover ;}
 
 /*** Slide Background ***/
-.slider-1 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/slider/1.png") repeat scroll center center / cover ;}
-.slider-2 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/slider/7.png") repeat scroll center center / cover!important ;}
-.slider-3 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/slider/8.png") repeat scroll center center / cover!important ;}
-.slider-4 {background: rgba(0, 0, 0, 0) url("/theme/malio/imgm/slider/9.png") repeat scroll center center / cover!important ;}
+.slider-1 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/slider/1.png") repeat scroll center center / cover ;}
+.slider-2 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/slider/7.png") repeat scroll center center / cover!important ;}
+.slider-3 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/slider/8.png") repeat scroll center center / cover!important ;}
+.slider-4 {background: rgba(0, 0, 0, 0) url("/theme/jdl/imgm/slider/9.png") repeat scroll center center / cover!important ;}
 
 /*pattern background*/
 .pattern-bg { background:url(../../images/pattern/pattern-bg.png) repeat; background-position: top right; background-color: rgba(236, 239, 247, 1); }
