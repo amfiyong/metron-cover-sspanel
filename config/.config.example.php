@@ -21,7 +21,7 @@ $_ENV['baseUrl'] = 'http://url.com';               //站点地址
 $_ENV['muKey'] = 'default_mu_key';               //用于校验魔改后端请求，可以随意修改，但请保持前后端一致，否则节点不能工作！
 
 //添加主题首页
-$_ENV['metron_index']    = 'index';  //index:metron原生  index_malio:马里奥   index_zhujike:主机壳  index_cool:cool主题  index_jdy:悟空主题
+$_ENV['metron_index']    = 'index';  //index:metron原生  index_malio:马里奥   index_zhujike:主机壳  index_cool:cool主题  index_jdl:悟空主题
 
 //数据库设置--------------------------------------------------------------------------------------------
 // db_host|db_socket 二选一，若设置 db_socket 则 db_host 会被忽略，不用请留空。若数据库在本机上推荐用 db_socket。
