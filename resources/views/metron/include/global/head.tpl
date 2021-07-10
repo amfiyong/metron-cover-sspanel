@@ -16,7 +16,8 @@
     <link href="{$metron['assets_url']}/css/style/white/giatun.white.css" rel="stylesheet" type="text/css" />
     <link href="{$metron['assets_url']}/css/style/white/style.white.css" rel="stylesheet" type="text/css" />
 {/if}
-<link href="/favicon.ico" rel="shortcut icon" />
+<link href="/favicon.png" rel="icon">
+<link href="/apple-touch-icon.png" rel="apple-touch-icon">
 </head>
 <body id="kt_body" {if $theme_style !== 'dark'}style="background-image: url({$metron['assets_url']}/media/bg/bg-01-450.jpg)"{/if} class="quick-panel-right demo-panel-right offcanvas-right header-fixed subheader-enabled page-loading">
 <div id="kt_header_mobile" class="header-mobile">
