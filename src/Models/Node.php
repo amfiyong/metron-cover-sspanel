@@ -389,7 +389,7 @@ class Node extends Model
         $item['passwd']   = $user->getUuid();
         $item['host']     = $item['address'];
         $item['net']      = (isset($opt['grpc']) ? "grpc" :'');
-        $item['servicename'] = (isset($opt['serviceName']) ? $opt['serviceName'] :'');
+        $item['servicename'] = (isset($opt['servicename']) ? $opt['servicename'] :'');
         $item['flow']	  = (isset($opt['flow']) ? $opt['flow'] :'');
         $xtls			= (isset($opt['enable_xtls']) ? $opt['enable_xtls'] :'');
         if($xtls == 'true'){

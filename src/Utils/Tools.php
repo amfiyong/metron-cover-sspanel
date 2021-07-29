@@ -579,7 +579,7 @@ class Tools
                 $item['vtype'] = 'vmess://';
             }
 
-            if (array_key_exists('host', $item)) {
+            if (array_key_exists('sni', $item)) {
                 $item['sni'] = $item['host'];
             }
         }

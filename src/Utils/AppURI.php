@@ -394,7 +394,8 @@ class AppURI
                     'server' => $item['address'],
                     'port' => $item['port'],
                     'password' => $item['passwd'],
-                    'sni' => $item['host']
+                    'sni' => $item['host'],
+                    'udp' => true
                 ];
                 if ($item['net'] == 'grpc') {
                     $return['network'] = 'grpc';
