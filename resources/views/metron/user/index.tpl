@@ -190,9 +190,90 @@
                                 <div class="col-lg-7">
                                     <!-- 客户端下载 -->
                                     {include file='include/index/client.tpl'}
+                                    <!-- 流量统计 -->
+                                    <div class="card card-custom gutter-b {$metron['style_shadow']}">
+                                            <div class="card-header border-0 pt-5">
+                                                <div class="card-title font-weight-bolder">
+                                                    <div class="card-label {$style[$theme_style]['global']['title']} font-weight-bold font-size-h3">
+                                                        <i class="fa fa-tint icon-md {$style[$theme_style]['global']['title']}"></i><strong> 流量信息</strong>
+                                                        <div class="font-size-sm text-muted mt-2">峰值速率：{if $user->node_speedlimit!=0}{$user->node_speedlimit}Mbps{else}不限制{/if}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body pt-2">
+                                                <div id="flowTiaoChart" style="height: 250px"></div>
+                                                <div class="mt-n12 position-relative zindex-0">
+                                                    <div class="row">
+                                                        <div class="col-4 col-xs-4 col-sm-4 col-lg-12 col-xl-4">
+                                                            <div class="d-flex align-items-center mb-8">
+                                                                <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                                                    <div class="symbol-label">
+                                                                        <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                                                    <path d="M5,5 L5,15 C5,15.5948613 5.25970314,16.1290656 5.6719139,16.4954176 C5.71978107,16.5379595 5.76682388,16.5788906 5.81365532,16.6178662 C5.82524933,16.6294602 15,7.45470952 15,7.45470952 C15,6.9962515 15,6.17801499 15,5 L5,5 Z M5,3 L15,3 C16.1045695,3 17,3.8954305 17,5 L17,15 C17,17.209139 15.209139,19 13,19 L7,19 C4.790861,19 3,17.209139 3,15 L3,5 C3,3.8954305 3.8954305,3 5,3 Z" fill="#000000" fill-rule="nonzero" transform="translate(10.000000, 11.000000) rotate(-315.000000) translate(-10.000000, -11.000000) "/>
+                                                                                    <path d="M20,22 C21.6568542,22 23,20.6568542 23,19 C23,17.8954305 22,16.2287638 20,14 C18,16.2287638 17,17.8954305 17,19 C17,20.6568542 18.3431458,22 20,22 Z" fill="#000000" opacity="0.3"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="font-size-h6 {$style[$theme_style]['global']['text']} font-weight-bolder">{$user->unusedTraffic()}</div>
+                                                                    <div class="font-size-sm text-muted font-weight-bold mt-1">剩余流量</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4 col-xs-4 col-sm-4 col-lg-12 col-xl-4">
+                                                            <div class="d-flex align-items-center mb-8">
+                                                                <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                                                    <div class="symbol-label">
+                                                                        <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                                    <path d="M4.00246329,12.2004927 L13,14 L13,4.06189375 C16.9463116,4.55399184 20,7.92038235 20,12 C20,16.418278 16.418278,20 12,20 C7.64874861,20 4.10886412,16.5261253 4.00246329,12.2004927 Z" fill="#000000" opacity="0.3" />
+                                                                                    <path d="M3.0603968,10.0120794 C3.54712466,6.05992157 6.91622084,3 11,3 L11,11.6 L3.0603968,10.0120794 Z" fill="#000000" />
+                                                                                </g>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="font-size-h6 {$style[$theme_style]['global']['text']} font-weight-bolder">{$user->TodayusedTraffic()}</div>
+                                                                    <div class="font-size-sm text-muted font-weight-bold mt-1">今日使用</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4 col-xs-4 col-sm-4 col-lg-12 col-xl-4">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="symbol symbol-circle symbol-40 symbol-light mr-3 flex-shrink-0">
+                                                                    <div class="symbol-label">
+                                                                        <span class="svg-icon svg-icon-lg svg-icon-gray-500">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                                                    <path d="M7.67514486,18.731359 C9.6803634,17.3851601 11,15.0966889 11,12.5 C11,9.58867922 9.34119765,7.06479249 6.91718054,5.82192739 C8.29918974,4.68360845 10.0697622,4 12,4 C16.418278,4 20,7.581722 20,12 C20,16.418278 16.418278,20 12,20 C10.4066753,20 8.92214267,19.5342055 7.67514486,18.731359 Z" fill="#000000" opacity="0.3"/>
+                                                                                    <path d="M6.39268296,17.7059641 C4.91588435,16.254539 4,14.2342276 4,12 C4,10.0680854 4.68479668,8.29611365 5.82489501,6.91357974 C7.72637261,8.04773008 9,10.1251292 9,12.5 C9,14.6298467 7.97562469,16.5204376 6.39268296,17.7059641 Z" fill="#000000"/>
+                                                                                </g>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="font-size-h6 {$style[$theme_style]['global']['text']} font-weight-bolder">{$user->LastusedTraffic()}</div>
+                                                                    <div class="font-size-sm text-muted font-weight-bold mt-1">历史使用</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
                                     <!-- 公告-->
                                     <div class="card card-custom bgi-no-repeat gutter-b {$metron['style_shadow']}"
-                                         {if $theme_style !== 'dark'}style="background-position: right top; background-size: 30% auto; background-image: url({$metron['assets_url']}/media/svg/shapes/abstract-2.svg)" {/if}>
+                                        {if $theme_style !== 'dark'}style="background-position: right top; background-size: 30% auto; background-image: url({$metron['assets_url']}/media/svg/shapes/abstract-2.svg)" {/if}>
                                         <div class="card-header border-0 pt-5">
                                             <div class="card-title font-weight-bolder">
                                                 <div class="card-label {$style[$theme_style]['global']['title']} font-weight-bold font-size-h3">
