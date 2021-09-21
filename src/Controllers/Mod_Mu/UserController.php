@@ -91,27 +91,23 @@ class UserController extends BaseController
         )->where('enable, 1')->('expire_in', '>',date('Y-m-d H:i:s'))->get();
 
         $users = array();
-
-        $key_list = array
-        $key_list_ss_ssr = arry(
-            'method', 'obfs', 'obfs_parm', 'protocol', 'protocol_parm',
-            'forbidden_ip', 'forbidden_port', 'node_speedlimit', 'disconect_ip', 
-            'is_multi_user', 'u', 'd', 'transfer_enable', 'id', 'port', 'passwd',
-            'node_connector', 'alive_ip'
-        );
-
-        $key_list_v2ray = array(
-            'forbidden_ip', 'forbidden_port', 'node_speedlimit', 'disconnect_ip',
-            'u', 'd', 'transfer_enable', 'id', 'node_connector', 'uuid', 'alive_ip'
-        );
-
         
-        $key_list_trojan = array(
-            'forbidden_ip', 'forbidden_port', 'node_speedlimit', 'disconnect_ip',
-            'u', 'd', 'trnasfer_enable', 'id', 'node_connector', 'sha224uuid', 'alive_ip'
-        );
+        if ($node->sort == 14) {
+            $key_list = array('node_speedlimit', 'u', 'd', 'transfer_enable', 'id', 'node_connector', 'uuid', 'alive_ip');
+        } elseif ($node->sort == 11) {
+            $key_list = array('node_speedlimit', 'u', 'd', 'transfer_enable', 'id', 'node_connector', 'uuid', 'alive_ip');
+        } else {
+            $key_list = array(
+                'method', 'obfs', 'obfs_param', 'protocol', 'protocol_param', 'node_speedlimit',
+                'is_multi_user', 'u', 'd', 'transfer_enable', 'id', 'port', 'passwd', 'node_connector', 'alive_ip'
+            );
+        }
 
+        $alive_ip = (new \App\Models\Ip)->getUserAliveIpCount();
         foreach ($users_raw as $user_raw) {
+            if ($user_raw->node_connector != 0) {
+                $user_raw->alive_ip = $alive_ip[strval($user_raw->id)];
+            }
             if ($user_raw->transfer_enable <= $user_raw->u + $user_raw->d) {
                 if ($_ENV['keep_connect'] === true) {
                     // 流量耗尽用户限速至 1Mbps

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Utils\DatatablesHelper;
 
 /**
  * Ip Model
@@ -32,6 +33,21 @@ class Ip extends Model
         return $node;
     }
 
+
+    public function ip()
+    {
+        return str_replace('::ffff:', '', $this->attributes['ip']);
+    }
+
+    public function getUserAliveIpCount()
+    {
+        $db = new DatatablesHelper();
+        $res = [];
+        foreach ($db->query('SELECT `userid`, COUNT(DISTINCT `ip`) AS `count` FROM `alive_ip` WHERE `datetime` >= UNIX_TIMESTAMP(NOW()) - 60 GROUP BY `userid`') as $line) {
+            $res[strval($line['userid'])] = $line['count'];
+        }
+        return $res;
+    }
 
     public function ip()
     {
