@@ -41,11 +41,9 @@ class Job extends Command
     public $description = ''
     . '├─=: php xcat Job [选项]' . PHP_EOL
     . '│ ├─ SendMail                - 处理邮件队列' . PHP_EOL
-    . '│ ├─ UserGa                  - 二次验证' . PHP_EOL
     . '│ ├─ DailyJob                - 每日任务' . PHP_EOL
     . '│ ├─ CheckJob                - 检查任务，每分钟' . PHP_EOL
-    . '│ ├─ UserJob                 - 用户账户相关任务，每小时' . PHP_EOL
-    . '│ ├─ updatedownload          - 检查客户端更新' . PHP_EOL;
+    . '│ ├─ UserJob                 - 用户账户相关任务，每小时' . PHP_EOL;
 
     public function boot()
     {
@@ -567,36 +565,6 @@ class Job extends Command
             )->delete();
             $Task->delete();
         }
-    }
-
-    /**
-     * 定时任务开启的情况下，每天自动检测有没有最新版的后端，github源来自Miku
-     *
-     * @return void
-     */
-    public function updatedownload()
-    {
-        system(
-            'cd ' . BASE_PATH . '/public/ssr-download/ && git pull https://github.com/xcxnig/ssr-download.git && git gc'
-        );
-    }
-
-    /**
-     * 二次验证
-     *
-     * @return void
-     */
-    public function UserGa()
-    {
-        $users = User::all();
-        foreach ($users as $user) {
-            $ga = new GA();
-            $secret = $ga->createSecret();
-
-            $user->ga_token = $secret;
-            $user->save();
-        }
-        echo 'ok';
     }
 
     public function MetronTask()
